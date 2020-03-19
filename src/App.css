@@ -1,0 +1,61 @@
+@import '~antd/dist/antd.css';
+
+.ant-layout-header {
+    box-shadow: 0 0 18px 0 #e6e6e6 !important;
+    padding: 0 20px;
+    height: 96px;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    background: rgba(255, 255, 255, 0.2);
+    float: left;
+    color: #1d1d1d;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+
+.ant-layout, .content, .ant-layout-header {
+    background: white;
+}
+
+.content {
+    margin: 20px;
+}
+
+.text {
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.action {
+    height: 64px;
+    display: grid;
+    align-items: center;
+    margin-bottom: 36px;
+}
+
+.last-sync {
+    text-align: center;
+}
+
+.card-list {
+    margin-top: 36px;
+}
+
+.spin-load {
+    align-self: center;
+    margin: auto;
+}
+
+.spin-root {
+    display: flex;
+    height: 100vh;
+}
+
+.footer {
+    text-align: center;
+    background: white;
+    margin-top: 50px;
+}
