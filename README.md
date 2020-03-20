@@ -1,4 +1,4 @@
-# COVID 19 SL Patient Tracker
+# COVID 19  Tracker
 
 A simple dashboard for the realtime COVID-19 patient data of the Sri Lanka.
 
@@ -7,7 +7,6 @@ A simple dashboard for the realtime COVID-19 patient data of the Sri Lanka.
 - [React](https://reactjs.org/)
 - [Ant Design](https://ant.design/)
 
-This project is powered by [http://hpb.health.gov.lk/api-documentation](http://hpb.health.gov.lk/api-documentation)
 
 ## Available Scripts
 
@@ -21,4 +20,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-Made with ❤ by [Dhanushka](https://dhanushka.dev/) | Powered by [hpb.health.gov.lk](http://hpb.health.gov.lk/api-documentation)
