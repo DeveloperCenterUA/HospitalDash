@@ -13,29 +13,25 @@ const HospitalPanel = ({data}) => {
               <Col xs={{span: 24}} sm={{span: 24}} md={{span: 20}} style={{marginTop: '25px'}}>
                   <Row>
                       {data.map(item => {
-                        const titleNode = <Tooltip placement="top" title={item.hospital.name}>
-                            <Text>{item.hospital.name}</Text>
+                          console.log(item);
+                        const titleNode = <Tooltip placement="bottomLeft" title={item.legal_entity_name}>
+                            <Text>{item.legal_entity_name}</Text>
                         </Tooltip>;
-                        return <Col key={item.hospital_id} xs={{span: 24}} sm={{span: 11}} md={{span: 5}}
+                        return <Col key={item.legal_entity_id + '' + item.division_id} xs={{span: 24}} sm={{span: 11}} md={{span: 5}}
                                     style={{marginRight: '20px', marginBottom: '20px'}}>
                             <Card title={titleNode}>
                                 <div>
-                                    <span className="cumulative-local">{item.cumulative_local}</span>
-                                    <Text type="secondary" className="treatment-local">{item.treatment_local} new
-                                        cases</Text>
+                                    <Text>division_settlement_type { item.division_settlement_type }</Text>
                                     <div>
-                                        <Text type="secondary" className="cumulative-local-text">Total locals being
-                                            tested</Text>
+                                        <Text>division_settlement_type { item.division_settlement_type }</Text>
                                     </div>
                                 </div>
 
                                 <div>
-                                    <span className="cumulative-local">{item.cumulative_foreign}</span>
-                                    <Text type="secondary" className="treatment-local">{item.treatment_foreign} new
-                                        cases</Text>
+                                    <Text>division_name { item.division_name }</Text>
                                     <div>
-                                        <Text type="secondary" className="cumulative-local-text">Total foreigners being
-                                            tested</Text>
+                                        <Text>ehealth_division_lng { item.ehealth_division_lng }</Text>
+                                        <Text>ehealth_division_lat { item.ehealth_division_lat }</Text>
                                     </div>
                                 </div>
                             </Card>

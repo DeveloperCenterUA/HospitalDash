@@ -17,6 +17,8 @@ import PanelPage from "./Pages/PanelPage/PanelPage";
 import HospitalPanel from "./Pages/HospitalPanel/HospitalPanel";
 import QAPanel from "./components/QAPanel/QAPanel";
 import CardPanel from "./components/CardPanel/CardPanel";
+import Papa from 'papaparse';
+import { Pagination } from 'antd';
 
 const {Header, Content, Footer} = Layout;
 const {Title} = Typography;
@@ -26,6 +28,7 @@ function App() {
     const [isLoading, setIsLoading] = useState(false);
     const [isLocal, setIsLocal] = useState(true);
     const [timer, setTimer] = useState(0);
+    const [lastIndex, setLastIndex] = useState(1);
     const [state, setState] = useState({
         update_date_time: "2020-03-18 20:32:00",
         local_new_cases: 9,
@@ -48,40 +51,13 @@ function App() {
     }, []);
 
     useEffect(() => {
-        fetchData()
+        Papa.parse('https://raw.githubusercontent.com/DeveloperCircleHub/HospitalDash/master/pmd_all_contracted_legal_entities.csv', {download: true,
+            header: true,
+            complete: function (results) {
+                setHospitalData(results.data);
+                setIsLoading(false);
+            }});
     }, [timer]);
-
-    const fetchData = async () => {
-        try {
-            setIsLoading(true);
-            const response = await fetch('https://hpb.health.gov.lk/api/get-current-statistical');
-            if (!response.ok) {
-                throw Error(response.statusText);
-            }
-            const json = await response.json();
-            const data = json.data;
-
-            setState({
-                ...state,
-                update_date_time: data.update_date_time,
-                local_new_cases: data.local_new_cases,
-                local_total_cases: data.local_total_cases,
-                local_deaths: data.local_deaths,
-                local_new_deaths: data.local_new_deaths,
-                local_recovered: data.local_recovered,
-                global_new_cases: data.global_new_cases,
-                global_total_cases: data.global_total_cases,
-                global_deaths: data.global_deaths,
-                global_new_deaths: data.global_new_deaths,
-                global_recovered: data.global_recovered
-            });
-
-            setHospitalData([...hospitalData, ...data.hospital_data]);
-            setIsLoading(false);
-        } catch (error) {
-            console.log(error);
-        }
-    };
 
     function onChange(value) {
         setIsLocal(value.target.value);
@@ -116,6 +92,10 @@ function App() {
 
     const data = [cases, deaths, recovered];
 
+    const setNextHospitalData = (val) => {
+        setLastIndex(val);
+    };
+
     return (
         <Layout className="layout">
             <BackTop/>
@@ -132,7 +112,8 @@ function App() {
                         <QAPanel/>
                     </Row>
                     <Row>
-                        <HospitalPanel data={hospitalData}/>
+                        { hospitalData.length > 0 && <Pagination defaultCurrent={lastIndex} total={hospitalData.length/50} onChange={setNextHospitalData} /> }
+                        <HospitalPanel data={hospitalData.slice((lastIndex-1)*50, lastIndex*50)}/>
                     </Row>
                     <Row>
                         <PanelPage/>
