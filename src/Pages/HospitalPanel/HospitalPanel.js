@@ -40,11 +40,7 @@ const HospitalPanel = ({data}) => {
                 </Row>
             </Col>
             <Col xs={{span: 24}} md={{span: 4}}>
-                <TwitterTimelineEmbed
-                    sourceType="profile"
-                    screenName="WHO"
-                    options={{height: 600}}
-                />
+              
             </Col>
         </Row>
     </div>;

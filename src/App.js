@@ -104,7 +104,7 @@ function App() {
         <Layout className="layout">
             <BackTop/>
             <Header>
-                <Title level={3} className="logo">COVID-19 Sri Lanka Tracker</Title>
+                <Title level={3} className="logo">COVID-19 Ukraine Tracker</Title>
             </Header>
             <Content className="content">
                 {isLoading && <div className="spin-root">
@@ -113,7 +113,7 @@ function App() {
                 {!isLoading && <div>
                     <Row className="card-list">
                         <CardPanel data={data} onChange={onChange} lastUpdate={state.update_date_time}/>
-                        <QAPanel/>
+
                     </Row>
                     <Row>
                         { hospitalData.length > 0 && <Pagination defaultCurrent={lastIndex} total={hospitalData.length/50} onChange={setNextHospitalData} /> }
@@ -121,6 +121,7 @@ function App() {
                     </Row>
                     <Row>
                         <PanelPage/>
+                        <QAPanel/>
                     </Row>
                 </div>}
             </Content>
