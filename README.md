@@ -1,6 +1,8 @@
 # COVID 19  Tracker
 
-A simple dashboard for the realtime COVID-19 patient data of the Sri Lanka.
+A simple dashboard for the realtime COVID-19  data .
+- local data connected now to Sri Lanka Health Department API / need to replace with data from Ukraine
+- localization (move text to translate in one file) 
 
 ## Tech Stack
 
