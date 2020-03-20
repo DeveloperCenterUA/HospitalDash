@@ -51,9 +51,11 @@ function App() {
     }, []);
 
     useEffect(() => {
-        Papa.parse('https://raw.githubusercontent.com/DeveloperCircleHub/HospitalDash/master/pmd_all_contracted_legal_entities.csv', {download: true,
+        setIsLoading(true);
+        Papa.parse('https://raw.githubusercontent.com/DeveloperCircleHub/HospitalDash/master/src/pmd_all_contracted_legal_entities.csv', {download: true,
             header: true,
             complete: function (results) {
+            console.log(results, 'here');
                 setHospitalData(results.data);
                 setIsLoading(false);
             }});
@@ -95,6 +97,8 @@ function App() {
     const setNextHospitalData = (val) => {
         setLastIndex(val);
     };
+
+    console.log(hospitalData);
 
     return (
         <Layout className="layout">
